@@ -9,8 +9,8 @@ class Line:
     def __init__(self, yIntercept: int, gradientRise: int, gradientRun: int):
         self.y = -yIntercept * 80
         for i in range(720):
-            self.y -= gradientRise
-            self.y2 += gradientRise
+            self.y += gradientRise
+            self.y2 -= gradientRise
             self.x -= gradientRun
             self.x2 += gradientRun
 
