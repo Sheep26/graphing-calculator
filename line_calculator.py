@@ -7,12 +7,12 @@ class Line:
     y2: int = 0
     
     def __init__(self, yIntercept: int, gradientRise: int, gradientRun: int):
-        self.y = -yIntercept * 108
-        for i in range(1080):
-            self.y += gradientRise
-            self.y2 += -gradientRise
-            self.x += gradientRun
-            self.x2 -= gradientRun
+        self.y = -yIntercept * 80
+        for i in range(720):
+            self.y -= gradientRise
+            self.y2 += gradientRise
+            self.x -= gradientRun
+            self.x2 += gradientRun
 
 lines = []
 lineAmount = int(input("Amount of lines: "))
@@ -24,7 +24,7 @@ for i in range(lineAmount):
     lines.append(Line(yInterceptInput, gradientRiseInput, gradientRunInput))
 
 pygame.init()
-screen = pygame.display.set_mode((1920, 1080))
+screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
@@ -34,12 +34,12 @@ while running:
             running = False
 
     screen.fill("black")
-    width = 1920
-    height = 1080
+    width = 1280
+    height = 720
     colour = (255, 255, 255)
     pygame.draw.line(screen, colour, (width / 2, 0), (width / 2, height), 3)
     pygame.draw.line(screen, colour, (0, height / 2), (width, height / 2), 3)
-        
+
     for line in lines:
         x = line.x
         y = line.y
