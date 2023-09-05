@@ -119,7 +119,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            plus_box = pygame.Rect(20, 40, stringWidth("+", 40), plus_y)
+            plus_box = pygame.Rect(20, 15, stringWidth("+", 40), 22)
             if plus_box.collidepoint(event.pos):
                 lines.append(Line("1x+0", len(lines)))
             for line in lines:
@@ -147,7 +147,6 @@ while running:
     screen.fill("black")
     width = 1280
     height = 720
-    plus_y:int = 40
     colour = (255, 255, 255)
     pygame.draw.line(screen, colour, (width / 2, 0), (width / 2, height), 3)
     pygame.draw.line(screen, colour, (0, height / 2), (width, height / 2), 3)
@@ -167,9 +166,8 @@ while running:
             line.colour = (255, 255, 255)
         drawText(f"{line.getID() + 1}: {line.getMethod()}", screen, 20, 40 + (line.getID() * 20), 24, line.colour)
         pygame.draw.line(screen, colour, (half_width + x, half_height + y), (half_width + x2, half_height + y2), 3)
-        plus_y += 20
     
-    drawText("+", screen, 20, plus_y, 40)
+    drawText("+", screen, 20, 15, 40)
 
     pygame.display.flip()
     
